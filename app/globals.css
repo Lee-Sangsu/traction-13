@@ -1,0 +1,153 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to exact brand colors: Red(primary): #F93F05, Black: #231F20, White: #E6E6E6 */
+  /* Extra colors: #462EFC (blue), #BC1E62 (pink), #FFE35C (yellow), #A8C2CC (light blue) */
+  --background: #ffffff;
+  --foreground: #231F20;
+  --card: #ffffff;
+  --card-foreground: #231F20;
+  --popover: #ffffff;
+  --popover-foreground: #231F20;
+  --primary: #F93F05;
+  --primary-foreground: #ffffff;
+  --secondary: #462EFC;
+  --secondary-foreground: #ffffff;
+  --muted: #E6E6E6;
+  --muted-foreground: #666666;
+  --accent: #FFE35C;
+  --accent-foreground: #231F20;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #E6E6E6;
+  --input: #ffffff;
+  --ring: #F93F05;
+  --chart-1: #F93F05;
+  --chart-2: #462EFC;
+  --chart-3: #BC1E62;
+  --chart-4: #FFE35C;
+  --chart-5: #A8C2CC;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #231F20;
+  --sidebar-primary: #F93F05;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #E6E6E6;
+  --sidebar-accent-foreground: #231F20;
+  --sidebar-border: #E6E6E6;
+  --sidebar-ring: #F93F05;
+  --font-anton: "Anton", sans-serif;
+  --font-helvetica: "Helvetica Neue", sans-serif;
+}
+
+.dark {
+  /* Dark mode with updated brand colors */
+  --background: #231F20;
+  --foreground: #E6E6E6;
+  --card: #2a2a2a;
+  --card-foreground: #E6E6E6;
+  --popover: #2a2a2a;
+  --popover-foreground: #E6E6E6;
+  --primary: #F93F05;
+  --primary-foreground: #ffffff;
+  --secondary: #462EFC;
+  --secondary-foreground: #ffffff;
+  --muted: #333333;
+  --muted-foreground: #999999;
+  --accent: #FFE35C;
+  --accent-foreground: #231F20;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #404040;
+  --input: #2a2a2a;
+  --ring: #F93F05;
+  --chart-1: #F93F05;
+  --chart-2: #462EFC;
+  --chart-3: #BC1E62;
+  --chart-4: #FFE35C;
+  --chart-5: #A8C2CC;
+  --sidebar: #2a2a2a;
+  --sidebar-foreground: #E6E6E6;
+  --sidebar-primary: #F93F05;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #333333;
+  --sidebar-accent-foreground: #E6E6E6;
+  --sidebar-border: #404040;
+  --sidebar-ring: #F93F05;
+  --font-anton: "Anton", sans-serif;
+  --font-helvetica: "Helvetica Neue", sans-serif;
+}
+
+@theme inline {
+  /* Updated to brand fonts: Anton, Helvetica Neue */
+  --font-sans: var(--font-helvetica);
+  --font-serif: var(--font-helvetica);
+  --font-mono: var(--font-anton);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom utility classes for brand fonts */
+.font-anton {
+  font-family: var(--font-anton);
+}
+
+.font-helvetica {
+  font-family: var(--font-helvetica);
+}
+
+/* Custom animation for text sliding in from left */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
