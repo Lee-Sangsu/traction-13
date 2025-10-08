@@ -41,6 +41,7 @@
   --sidebar-ring: #F93F05;
   --font-anton: "Anton", sans-serif;
   --font-helvetica: "Helvetica Neue", sans-serif;
+  --font-ibm-plex-mono: "IBM Plex Mono", monospace;
 }
 
 .dark {
@@ -79,13 +80,14 @@
   --sidebar-ring: #F93F05;
   --font-anton: "Anton", sans-serif;
   --font-helvetica: "Helvetica Neue", sans-serif;
+  --font-ibm-plex-mono: "IBM Plex Mono", monospace;
 }
 
 @theme inline {
-  /* Updated to brand fonts: Anton, Helvetica Neue */
+  /* Updated to brand fonts: Anton, Helvetica Neue, IBM Plex Mono */
   --font-sans: var(--font-helvetica);
   --font-serif: var(--font-helvetica);
-  --font-mono: var(--font-anton);
+  --font-mono: var(--font-ibm-plex-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -140,6 +142,10 @@
 
 .font-helvetica {
   font-family: var(--font-helvetica);
+}
+
+.font-ibm-plex-mono {
+  font-family: var(--font-ibm-plex-mono);
 }
 
 /* Custom animation for text sliding in from left */

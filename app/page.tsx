@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { StudentToast } from "@/components/toast-provider"
 import { ScheduleSection } from "@/components/index/schedule-section"
+import { ApplicationButton } from "@/components/application-button"
 
 export default function Home() {
   return (
@@ -13,8 +14,8 @@ export default function Home() {
         <div className="max-w-3xl">
           {/* Badge */}
           <div className="flex justify-center mb-8 md:mb-10">
-            <div className="border border-dark rounded-full px-6 md:px-8 py-2.5 md:py-3">
-              <p className="text-sm md:text-base font-medium uppercase tracking-wide">
+            <div className="border border-dark rounded-full px-4 md:px-8 py-2 md:py-3 text-center">
+              <p className="text-xs md:text-base font-medium uppercase tracking-wide">
                 13 days • AI-assisted • Hybrid • Prize ₩1.5M
               </p>
             </div>
@@ -38,16 +39,12 @@ export default function Home() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center font-ibm-plex-mono">
+            <ApplicationButton text="APPLY NOW" variant="primary" />
             <Button
               size="lg"
-              className="w-full sm:w-auto text-base md:text-lg px-8 md:px-12 py-5 md:py-6 bg-white hover:bg-gray-50 text-dark border border-dark rounded-full uppercase tracking-wide"
-            >
-              APPLY NOW
-            </Button>
-            <Button
-              size="lg"
-              className="w-full sm:w-auto text-base md:text-lg px-8 md:px-12 py-5 md:py-6 bg-primary hover:bg-primary/90 text-white rounded-full uppercase tracking-wide"
+              variant="outline"
+              className="w-full sm:w-auto text-base md:text-lg px-8 md:px-12 py-5 md:py-6 rounded-full uppercase tracking-wide"
             >
               Scholarship
             </Button>
@@ -120,8 +117,10 @@ export default function Home() {
             {/* Point 1 */}
             <div className="relative w-full h-full flex items-start">
               <div className="sticky top-20 space-y-4 max-w-sm">
-                <div className="text-6xl font-anton text-[#462efc]">1</div>
-                <h3 className="text-3xl font-helvetica-bold uppercase">Find the right problem</h3>
+                <div className="flex flex-row items-center gap-4">
+                  <span className="text-[#462efc] text-7xl font-anton">1</span>
+                  <h3 className="text-3xl font-helvetica-bold uppercase leading-tight">Find the right problem</h3>
+                </div>
                 <p className="text-base font-helvetica text-dark/80">
                   Build problem-fit you can point to: clear target, real pain, and a success metric that guides choices. You leave with a tight problem brief and shared language, so your team, your messaging, and your customers are finally talking about the same thing.
                 </p>
@@ -131,8 +130,10 @@ export default function Home() {
             {/* Point 2 */}
             <div className="relative w-full h-full flex items-start pt-[316px]">
               <div className="sticky top-[316px] space-y-4 max-w-sm">
-                <div className="text-6xl font-anton text-[#bc1e62]">2</div>
-                <h3 className="text-3xl font-helvetica-bold uppercase">Shape a buyable offer</h3>
+                <div className="flex flex-row items-center gap-4">
+                  <span className="text-[#bc1e62] text-7xl font-anton">2</span>
+                  <h3 className="text-3xl font-helvetica-bold uppercase leading-tight">Shape a buyable offer</h3>
+                </div>
                 <p className="text-base font-helvetica text-dark/80">
                   Turn insight into something people pick quickly: a crisp promise, a sensible price, and a simple path to "yes." The result is an offer that lands in seconds and gives you clean signals when it's time to refine or double down.
                 </p>
@@ -142,8 +143,10 @@ export default function Home() {
             {/* Point 3 */}
             <div className="relative w-full h-full flex items-start pt-[632px]">
               <div className="sticky top-[632px] space-y-4 max-w-sm">
-                <div className="text-6xl font-anton text-[#ffe35c]">3</div>
-                <h3 className="text-3xl font-helvetica-bold uppercase">Run a daily sales loop</h3>
+                <div className="flex flex-row items-center gap-4">
+                  <span className="text-[#ffe35c] text-7xl font-anton">3</span>
+                  <h3 className="text-3xl font-helvetica-bold uppercase leading-tight">Run a daily sales loop</h3>
+                </div>
                 <p className="text-base font-helvetica text-dark/80">
                   A system you can keep running. With AI as co-pilot, you track leads and conversations, learn faster from each touchpoint, and finish with visible proof and a story that holds up on stage.
                 </p>
@@ -160,12 +163,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative px-5 sm:px-10 lg:px-20 py-16 md:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-0 z-10">
             {/* Left Content */}
-            <div>
+            <div className="z-10">
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-anton uppercase mb-6">
                 Everything you <br />
                 need to <span className="text-primary">ship</span>
               </h2>
-              <p className="text-sm md:text-base font-mono uppercase mb-8 md:mb-12">
+              <p className="text-sm md:text-base font-ibm-plex-mono uppercase mb-8 md:mb-12">
                 For only ₩75,000 until November 1
               </p>
 
@@ -200,7 +203,7 @@ export default function Home() {
             <div className="flex flex-col items-start justify-end pb-8 md:pb-12">
               <div className="flex flex-col w-fit items-center justify-center">
                 {/* Scholarship */}
-                <div className="bg-white/40 text-black backdrop-blur-[20px] rounded-[44px] p-6 flex items-start justify-between h-[88px] w-[320px] z-10 relative">
+                <div className="bg-white/40 text-black backdrop-blur-[20px] rounded-4xl p-6 flex items-start justify-between h-[88px] w-[320px] z-10 relative">
                   <p className="text-sm font-helvetica-bold">Scholarship</p>
                   <p className="text-sm font-helvetica line-through uppercase">₩75.000</p>
                 </div>
@@ -217,7 +220,7 @@ export default function Home() {
                 </div>
 
                 {/* Last Chance */}
-                <div className="bg-white/40 text-black backdrop-blur-[20px] rounded-[44px] p-6 flex items-end justify-between shadow-[0px_4px_4px_rgba(0,0,0,0.1)] h-[88px] w-[320px] z-20 relative -mt-10">
+                <div className="bg-white/40 text-black backdrop-blur-[20px] rounded-4xl p-6 flex items-end justify-between shadow-[0px_4px_4px_rgba(0,0,0,0.1)] h-[88px] w-[320px] z-20 relative -mt-10">
                   <div className="flex items-center gap-3">
                     <p className="text-base font-helvetica-bold">Last Change</p>
                     <p className="text-sm font-mono">Nov 1</p>
@@ -226,7 +229,7 @@ export default function Home() {
                 </div>
 
                 {/* After Nov 10 */}
-                <div className="bg-white/36 text-black backdrop-blur-[20px] rounded-[44px] p-6 flex items-end justify-between h-[88px] w-[280px] z-10 relative -mt-10">
+                <div className="bg-white/36 text-black backdrop-blur-[20px] rounded-4xl p-6 flex items-end justify-between h-[88px] w-[280px] z-10 relative -mt-10">
                   <p className="text-sm font-bold">After Nov 10</p>
                   <p className="text-sm font-helvetica uppercase">₩220.000</p>
                 </div>
@@ -234,7 +237,7 @@ export default function Home() {
             </div>
           </div>
           {/* Background Image - Desktop only */}
-          <div className="hidden md:block absolute -right-20 top-1/2 -translate-y-1/2 h-full">
+          <div className="hidden md:block absolute -right-20 top-1/2 -translate-y-1/2 h-full z-0">
             <Image
               src="/img/girl-grabbing.png"
               alt="Traction 13"
@@ -247,8 +250,8 @@ export default function Home() {
       </section>
 
       {/* AI Support Section */}
-      <section className="w-full px-5 sm:px-10 lg:px-20 py-16 md:py-24 bg-primary">
-        <div className="max-w-7xl mx-auto">
+      <section className="w-full py-12 md:py-16 px-5">
+        <div className="max-w-7xl mx-auto bg-primary rounded-4xl px-5 md:px-20 py-12 md:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
             {/* Left Content */}
             <div className="text-white">
@@ -276,22 +279,21 @@ export default function Home() {
                 </p>
               </div>
 
-              <Button
-                className="bg-transparent hover:bg-white/10 text-white border border-white rounded-full px-8 py-6 font-mono uppercase text-sm"
-              >
-                APPLY NOW
-              </Button>
+              <ApplicationButton text="APPLY NOW" variant="outlined" />
             </div>
 
             {/* Right Content - Placeholder for AI Chat Interface */}
             <div className="relative">
-              <div className="bg-white rounded-2xl p-6 shadow-xl h-[400px] md:h-[500px]">
+              <div className="h-96 md:h-full">
                 {/* Placeholder for chat interface */}
+                <Image src='/img/ai-support.png' alt="AI Support" 
+                  width={649} height={656} 
+                  className="object-cover h-full w-auto" />
               </div>
 
               {/* Floating Cards */}
               <div className="absolute -bottom-8 -right-4 bg-[#462efc] rounded-2xl p-4 shadow-lg max-w-xs">
-                <p className="text-2xl md:text-3xl font-anton text-white mb-1">6 tracks</p>
+                <p className="text-2xl md:text-3xl font-anton text-white mb-1 uppercase">6 tracks</p>
                 <p className="text-xs font-helvetica-bold uppercase text-white mb-2">dozens of templates in</p>
                 <p className="text-xs font-helvetica text-white">
                   Problem • Research • MVP • Rebrand • Marketing • Sales/Contracts.
@@ -305,7 +307,7 @@ export default function Home() {
       {/* Partners Section */}
       <section className="w-full px-5 sm:px-10 lg:px-20 py-16 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto">
-          <p className="text-base md:text-lg font-mono uppercase text-center mb-12">
+          <p className="text-base md:text-lg font-ibm-plex-mono uppercase text-center mb-12">
             Brands we've collaborated with
           </p>
 

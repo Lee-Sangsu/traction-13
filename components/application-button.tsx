@@ -28,8 +28,8 @@ export function ApplicationButton({ text = "APPLY NOW", variant = "primary" }: A
 
   const buttonClasses =
     variant === "primary"
-      ? "bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-6 font-mono uppercase text-sm md:text-base tracking-wide"
-      : "bg-transparent hover:bg-white/10 text-white border border-white rounded-full px-8 py-6 font-mono uppercase text-sm md:text-base tracking-wide"
+      ? "bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-6 font-ibm-plex-mono uppercase text-sm md:text-base tracking-wide"
+      : "hover:bg-white hover:text-black border border-dark rounded-full px-8 py-6 font-ibm-plex-mono uppercase text-sm md:text-base tracking-wide"
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

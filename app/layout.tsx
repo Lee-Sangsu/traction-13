@@ -1,11 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Anton, Roboto } from "next/font/google"
+import { Anton, Roboto, IBM_Plex_Mono } from "next/font/google"
 // import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
-import { Header } from "@/components/header"
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
 import { Toaster } from "@/components/ui/sonner"
 
 const anton = Anton({
@@ -22,6 +23,13 @@ const helvetica = Roboto({
   fallback: ["Helvetica Neue", "sans-serif"],
 })
 
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal"],
+  variable: "--font-ibm-plex-mono",
+})
+
 export const metadata: Metadata = {
   title: "Traction 13 — Evidence over opinions",
   description:
@@ -36,9 +44,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${anton.variable} ${helvetica.variable}`}>
+      <body className={`font-sans ${anton.variable} ${helvetica.variable} ${ibmPlexMono.variable}`}>
         <Header />
         <Suspense fallback={null}>{children}</Suspense>
+        <Footer />
         <Analytics />
         <Toaster />
       </body>

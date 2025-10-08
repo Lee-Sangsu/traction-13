@@ -83,7 +83,9 @@ export function ScheduleSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           {/* Main Define Card */}
-          <div className="bg-primary rounded-2xl p-6 md:p-8 lg:p-10 text-white relative overflow-hidden">
+          <div className={`rounded-2xl p-6 md:p-8 lg:p-10 text-white relative overflow-hidden ${
+            selectedIndex === 3 ? "bg-[#BC1E62]" : "bg-primary"
+          }`}>
             <div className="absolute top-6 left-5 md:top-8 md:left-6 text-6xl md:text-7xl font-anton text-white/20">
               {selected.number}
             </div>
@@ -130,12 +132,12 @@ export function ScheduleSection() {
                 onClick={() => setSelectedIndex(index)}
                 className={`w-full relative rounded-2xl p-6 md:p-8 shadow-lg flex flex-col items-start transition-all overflow-hidden ${
                   selectedIndex === index
-                    ? "bg-[#A8C2CC]"
+                    ? index === 3 ? "bg-primary" : "bg-[#A8C2CC]"
                     : "bg-white hover:shadow-xl"
                 }`}
               >
                 <div className={`absolute top-6 left-5 md:top-8 md:left-6 text-6xl md:text-7xl font-anton ${
-                  selectedIndex === index ? "text-[#FEFFFF30]" : "text-gray-400/20"
+                  selectedIndex === index ? "text-white/30" : "text-gray-400/20"
                 }`}>
                   {item.number}
                 </div>
@@ -148,10 +150,16 @@ export function ScheduleSection() {
                   style={{ filter: 'brightness(0) saturate(100%) invert(92%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(98%) contrast(90%)' }}
                 />
                 <div className="z-10 mt-8 md:mt-9 mb-2 flex flex-row items-end gap-2">
-                  <h3 className="text-5xl md:text-6xl font-anton uppercase">{item.title}</h3>
-                  <p className="text-base md:text-lg font-anton">{item.duration}</p>
+                  <h3 className={`text-5xl md:text-6xl font-anton uppercase ${
+                    selectedIndex === index ? "text-white" : ""
+                  }`}>{item.title}</h3>
+                  <p className={`text-base md:text-lg font-anton ${
+                    selectedIndex === index ? "text-white" : ""
+                  }`}>{item.duration}</p>
                 </div>
-                <p className="text-sm md:text-base font-roboto text-dark/80 z-10 text-left">
+                <p className={`text-sm md:text-base font-roboto z-10 text-left ${
+                  selectedIndex === index ? "text-white" : "text-dark/80"
+                }`}>
                   {item.shortDescription}
                 </p>
               </button>

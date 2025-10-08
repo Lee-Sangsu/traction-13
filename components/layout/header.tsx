@@ -1,8 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { DialogFooter, DialogHeader } from "./ui/dialog"
+import { ApplicationButton } from "@/components/application-button"
 import { Menu } from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
@@ -15,7 +13,7 @@ export function Header() {
       <div className="w-full mx-auto px-5 sm:px-10 lg:px-20">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center gap-3 md:gap-4">
+          <div className="flex items-center gap-2">
             <div className="w-8 h-8 relative">
               <Image src='/logo-icon.png'
                 alt="Traction 13 Logo"
@@ -50,29 +48,7 @@ export function Header() {
 
           {/* CTA Button - Desktop */}
           <div className="hidden md:block">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button
-                  className="bg-primary hover:bg-primary/90 text-white font-mono uppercase text-sm md:text-lg px-6 md:px-8 py-2 md:py-3 rounded-full transition-all duration-200 hover:scale-105"
-                >
-                  APPLY NOW
-                </Button>
-              </DialogTrigger>
-
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Apply Now</DialogTitle>
-                </DialogHeader>
-                <DialogDescription>
-                  Apply now to join the 13-day challenge.
-                </DialogDescription>
-                <DialogFooter>
-                  <Button className="bg-primary hover:bg-primary/90 text-white font-mono uppercase px-8 py-3 rounded-full">
-                    Apply Now
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
+            <ApplicationButton text="APPLY NOW" variant="primary" />
           </div>
 
           {/* Mobile Menu Button */}
@@ -123,31 +99,7 @@ export function Header() {
             >
               FAQ
             </a>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-mono uppercase text-sm px-6 py-3 rounded-full"
-                >
-                  APPLY NOW
-                </Button>
-              </DialogTrigger>
-
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Apply Now</DialogTitle>
-                </DialogHeader>
-                <DialogDescription>
-                  <p>
-                    Apply now to join the 13-day challenge.
-                  </p>
-                </DialogDescription>
-                <DialogFooter>
-                  <Button className="bg-primary hover:bg-primary/90 text-white font-mono uppercase px-8 py-3 rounded-full">
-                    Apply Now
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
+            <ApplicationButton text="APPLY NOW" variant="primary" />
           </nav>
         )}
       </div>
