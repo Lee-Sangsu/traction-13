@@ -12,16 +12,23 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-import { submitApplication } from "@/app/actions/submit-application"
+import { submitScholarship } from "@/app/actions/submit-scholarship"
 
-interface ApplicationButtonProps {
+interface ScholarshipButtonProps {
   text?: string
-  variant?: "primary" | "outlined"
+  variant?: "primary" | "outlined" | "default"
+  className?: string
+  asChild?: boolean
+  children?: React.ReactNode
 }
 
-export function ApplicationButton({ text = "APPLY NOW", variant = "primary" }: ApplicationButtonProps) {
+export function ScholarshipButton({
+  text = "GET SCHOLARSHIP",
+  variant = "default",
+  className = "",
+  asChild = false,
+  children
+}: ScholarshipButtonProps) {
   const [open, setOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
@@ -35,13 +42,11 @@ export function ApplicationButton({ text = "APPLY NOW", variant = "primary" }: A
     const email = formData.get("email") as string
     setUserEmail(email)
 
-    const result = await submitApplication({
+    const result = await submitScholarship({
       name: formData.get("name") as string,
       email,
-      phone: formData.get("phone") as string,
       university: formData.get("university") as string,
-      teamOrSolo: formData.get("teamOrSolo") as string,
-      motivation: formData.get("motivation") as string,
+      reason: formData.get("reason") as string,
     })
 
     setIsSubmitting(false)
@@ -49,35 +54,37 @@ export function ApplicationButton({ text = "APPLY NOW", variant = "primary" }: A
     if (result.success) {
       setSubmitSuccess(true)
     } else {
-      alert(result.error || "Failed to submit application. Please try again.")
+      alert(result.error || "Failed to submit scholarship request. Please try again.")
     }
   }
 
   const buttonClasses =
     variant === "primary"
-      ? "w-full md:w-fit bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-6 font-ibm-plex-mono uppercase text-sm md:text-base tracking-wide"
-      : "w-full md:w-fit hover:bg-white hover:text-black border border-dark rounded-full px-8 py-6 font-ibm-plex-mono uppercase text-sm md:text-base tracking-wide"
+      ? `w-full md:w-fit text-white rounded-full px-8 py-6 font-ibm-plex-mono uppercase text-sm md:text-base tracking-wide ${className}`
+      : variant === "outlined"
+      ? `w-full md:w-fit bg-transparent hover:text-black border border-dark rounded-full px-8 py-6 font-ibm-plex-mono uppercase text-sm md:text-base tracking-wide ${className}`
+      : className
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className={buttonClasses}>{text}</Button>
+        <Button className={buttonClasses}>{children || text}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto" onInteractOutside={(e) => e.preventDefault()}>
         <DialogHeader>
-          <DialogTitle className="text-2xl font-anton uppercase">Apply for Traction 13</DialogTitle>
+          <DialogTitle className="text-2xl font-anton uppercase">Request Free Access</DialogTitle>
           <DialogDescription className="font-helvetica">
-            Join the 13-day sprint to turn your idea into real traction.
+            Students can participate in Traction 13 for free. Fill out this form and we'll review your request.
           </DialogDescription>
         </DialogHeader>
 
         {submitSuccess ? (
           <div className="py-8 text-center space-y-4">
             <div className="text-6xl">✓</div>
-            <h3 className="text-xl font-anton uppercase">Application Submitted!</h3>
+            <h3 className="text-xl font-anton uppercase">Request Submitted!</h3>
             <p className="font-helvetica text-muted-foreground">
-              Thank you for applying! We've received your application and will get back to you shortly at{" "}
-              <span className="font-helvetica-bold">{userEmail}</span>.
+              Thank you for your interest! We've received your scholarship request and will review it shortly.
+              You'll hear back from us at <span className="font-helvetica-bold">{userEmail}</span>.
             </p>
             <Button
               onClick={() => {
@@ -106,41 +113,25 @@ export function ApplicationButton({ text = "APPLY NOW", variant = "primary" }: A
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="phone" className="text-sm font-helvetica-bold">
-                Phone Number
-              </label>
-              <Input id="phone" name="phone" type="tel" placeholder="+82 10-1234-5678" />
-            </div>
-
-            <div className="space-y-2">
               <label htmlFor="university" className="text-sm font-helvetica-bold">
-                University / Organization
+                University / Institution *
               </label>
-              <Input id="university" name="university" placeholder="e.g., Seoul National University" />
-            </div>
-
-            <div className="space-y-3">
-              <Label className="text-sm font-helvetica-bold">Team or Solo? *</Label>
-              <RadioGroup name="teamOrSolo" required className="flex gap-4">
-                <div className="flex items-center space-x-2 shadow-2xl">
-                  <RadioGroupItem value="Solo" id="solo" />
-                  <Label htmlFor="solo" className="font-helvetica cursor-pointer">Solo</Label>
-                </div>
-                <div className="flex items-center space-x-2 shadow-2xl">
-                  <RadioGroupItem value="Team" id="team" />
-                  <Label htmlFor="team" className="font-helvetica cursor-pointer">Team</Label>
-                </div>
-              </RadioGroup>
+              <Input
+                id="university"
+                name="university"
+                placeholder="e.g., Seoul National University"
+                required
+              />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="motivation" className="text-sm font-helvetica-bold">
-                Why Traction 13? *
+              <label htmlFor="reason" className="text-sm font-helvetica-bold">
+                Why do you want to participate in Traction 13? *
               </label>
               <Textarea
-                id="motivation"
-                name="motivation"
-                placeholder="Tell us your motivation and what you hope to achieve..."
+                id="reason"
+                name="reason"
+                placeholder="Tell us about your motivation and what you hope to achieve..."
                 className="min-h-[100px] font-helvetica border border-gray-400"
                 required
               />
@@ -151,7 +142,7 @@ export function ApplicationButton({ text = "APPLY NOW", variant = "primary" }: A
               disabled={isSubmitting}
               className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 font-ibm-plex-mono uppercase tracking-wide disabled:opacity-50"
             >
-              {isSubmitting ? "Submitting..." : "Submit Application"}
+              {isSubmitting ? "Submitting..." : "Submit Request"}
             </Button>
           </form>
         )}

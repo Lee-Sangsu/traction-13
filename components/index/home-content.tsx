@@ -1,13 +1,14 @@
 'use client'
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
-import { StudentToast } from "@/components/toast-provider"
+import { StudentToast, setScholarshipDialogOpener } from "@/components/toast-provider"
 import { ScheduleSection } from "@/components/index/schedule-section"
 import { ApplicationButton } from "@/components/application-button"
+import { ScholarshipButton } from "@/components/scholarship-button"
 import { PartnersMarquee } from "@/components/index/partners-marquee"
 
 const PARTNER_LOGOS = [
@@ -26,6 +27,12 @@ const PARTNER_LOGOS = [
 
 export function HomeContent() {
   const mainRef = useRef<HTMLElement | null>(null)
+  const [scholarshipDialogOpen, setScholarshipDialogOpen] = useState(false)
+
+  useEffect(() => {
+    // Register the scholarship dialog opener for the toast
+    setScholarshipDialogOpener(() => setScholarshipDialogOpen(true))
+  }, [])
 
   useEffect(() => {
     if (!mainRef.current) return
@@ -42,7 +49,6 @@ export function HomeContent() {
         .from(".hero-badge", { y: -24, opacity: 0, duration: 0.6 })
         .from(".hero-heading", { y: 48, opacity: 0, duration: 0.9 }, "-=0.3")
         .from(".hero-subheading", { y: 36, opacity: 0, duration: 0.7 }, "-=0.4")
-        .from(".hero-cta", { y: 24, opacity: 0, duration: 0.5, stagger: 0.12 }, "-=0.3")
 
       gsap.from(".collage-item", {
         opacity: 0,
@@ -112,17 +118,6 @@ export function HomeContent() {
         },
       })
 
-      gsap.from(".partner-cta", {
-        opacity: 0,
-        y: 28,
-        duration: 0.6,
-        ease: "power2.out",
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: ".partners-section",
-          start: "top 70%",
-        },
-      })
     }, mainRef)
 
     return () => ctx.revert()
@@ -162,17 +157,12 @@ export function HomeContent() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center font-ibm-plex-mono">
-            <div className="hero-cta">
-              <ApplicationButton text="APPLY NOW" variant="primary" />
-            </div>
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full sm:w-auto text-base md:text-lg px-8 md:px-12 py-5 md:py-6 rounded-full uppercase tracking-wide hero-cta"
-            >
-              Scholarship
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center font-ibm-plex-mono w-full">
+            <ApplicationButton text="APPLY NOW" variant="primary" />
+            <ScholarshipButton variant="outlined"
+              text="GET SCHOLARSHIP"
+              className="w-full md:w-fit text-base text-black rounded-full uppercase tracking-wide border border-dark hover:bg-white"
+            />
           </div>
         </div>
       </section>
@@ -325,7 +315,7 @@ export function HomeContent() {
             </div>
 
             {/* Right Pricing */}
-            <div className="flex flex-col items-start justify-end pb-8 md:pb-12 stagger-item">
+            <div className="z-20 flex flex-col items-start justify-end pb-8 md:pb-12 stagger-item">
               <div className="flex flex-col w-fit items-center justify-center">
                 {/* Scholarship */}
                 <div className="bg-white/40 text-black backdrop-blur-[20px] rounded-4xl p-6 flex items-start justify-between h-[88px] w-[320px] z-10 relative stagger-item">
@@ -415,7 +405,7 @@ export function HomeContent() {
                 {/* Placeholder for chat interface */}
                 <Image src='/img/ai-support.png' alt="AI Support" 
                   width={649} height={656} 
-                  className="object-cover h-full w-auto" />
+                  className="object-cover min-h-full min-w-full" />
               </div>
 
               {/* Floating Cards */}
@@ -450,15 +440,21 @@ export function HomeContent() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              className="w-full sm:w-auto bg-transparent hover:bg-gray-50 text-dark border border-dark rounded-full px-8 py-6 font-mono uppercase text-sm partner-cta stagger-item"
+            <Button variant="default"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-white border border-dark rounded-full px-8 py-6 font-mono uppercase text-sm"
+              asChild
             >
-              Become a partner
+              <a href="https://traction13.my.canva.site/" target="_blank" rel="noopener noreferrer">
+                Become a partner
+              </a>
             </Button>
-            <Button
-              className="w-full sm:w-auto bg-[#462efc] hover:bg-[#462efc]/90 text-white rounded-full px-8 py-6 font-mono uppercase text-sm partner-cta stagger-item"
+            <Button variant="default"
+              className="w-full sm:w-auto bg-[#462efc] hover:bg-[#462efc]/90 text-white rounded-full px-8 py-6 font-mono uppercase text-sm"
+              asChild
             >
-              Become a SPonsor
+              <a href="https://traction13.my.canva.site/" target="_blank" rel="noopener noreferrer">
+                Become a SPonsor
+              </a>
             </Button>
           </div>
         </div>

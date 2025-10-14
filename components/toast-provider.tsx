@@ -2,14 +2,19 @@
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { MessageCircle } from "lucide-react";
-import Link from "next/link";
+import { ScholarshipButton } from '@/components/scholarship-button'
+
+// This component will be imported by the toast to trigger the dialog
+let openScholarshipDialog: (() => void) | null = null;
+
+export const setScholarshipDialogOpener = (opener: () => void) => {
+  openScholarshipDialog = opener;
+};
 
 export const StudentToast = () => {
   useEffect(() => {
     // Show toast after a short delay to let the page load
     const timer = setTimeout(() => {
-    //   const toastId = `ai-agent-${tid}-${Date.now()}`;
-      
       toast.custom((t) => (
         <div className="bg-white border border-blue-200 rounded-lg shadow-lg p-4 max-w-sm">
           <div className="flex items-start gap-3">
@@ -18,17 +23,21 @@ export const StudentToast = () => {
             </div>
             <div className="flex-1 min-w-0">
               <h4 className="text-sm font-semibold text-gray-900 mb-1">
-                Are you student?
+                Are you a student?
               </h4>
               <p className="text-xs text-gray-600 mb-3">
-                Request for free access to the challenge by contacting us.
+                Request for free access to the challenge.
               </p>
-              <Link href={`/contact`}>
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-2 px-3 rounded-md flex items-center justify-center gap-2 transition-colors">
+
+              <ScholarshipButton 
+                text="GET SCHOLARSHIP"
+                variant="default"
+                className="w-full bg-blue-600"
+                children={(<div className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-2 px-3 rounded-md flex items-center justify-center gap-2 transition-colors">
                   <MessageCircle className="w-3 h-3" />
-                  Request a free access
-                </button>
-              </Link>
+                  Request free access
+                </div>)}
+              />
             </div>
             <button
               onClick={() => toast.dismiss(t)}
