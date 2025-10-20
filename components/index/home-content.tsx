@@ -469,7 +469,8 @@ export function HomeContent() {
           </Accordion>
 
           <p className="text-xs md:text-sm font-mono text-center text-white/70 mt-10 uppercase tracking-wide">
-            Still unsure? Reach out via apply form and we will get back within 24 hours.
+            Still unsure? Reach out via apply form and we will get back within 24 hours. <br/>
+            info@bnomad.co
           </p>
         </div>
       </section>
