@@ -5,6 +5,7 @@ import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { StudentToast, setScholarshipDialogOpener } from "@/components/toast-provider"
 import { ScheduleSection } from "@/components/index/schedule-section"
 import { ApplicationButton } from "@/components/application-button"
@@ -24,6 +25,29 @@ const PARTNER_LOGOS = [
   src: encodeURI(`/img/partner-logos/${file}`),
   alt,
 }))
+
+const FAQS = [
+  {
+    question: "Who is Traction 13 built for?",
+    answer: "Students, early founders, and operators who want traction fast. If you can commit to 13 focused days and want to leave with proof instead of theory, you are in the right place.",
+  },
+  {
+    question: "Do I need a team or existing idea?",
+    answer: "No. We help you pair up, source a real problem, and shape an offer from scratch. Solo applicants are welcome—many teams form during the sprint.",
+  },
+  {
+    question: "How much time should I set aside each day?",
+    answer: "Expect 2–3 hours daily. Live sessions are scheduled in blocks, and the rest is guided execution with checkpoints, templates, and async support.",
+  },
+  {
+    question: "What support do we receive during the sprint?",
+    answer: "You get daily reviews, AI copilots, plug-and-play assets, and mentor feedback on research, sales pages, and pitches so you are never blocked for long.",
+  },
+  {
+    question: "What happens after the program ends?",
+    answer: "You leave with a validated offer, buyer conversations, and a repeatable sales loop. Alumni get continued access to templates plus partner intros when relevant.",
+  },
+] as const
 
 export function HomeContent() {
   const mainRef = useRef<HTMLElement | null>(null)
@@ -418,6 +442,35 @@ export function HomeContent() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="w-full px-5 sm:px-10 lg:px-20 py-16 md:py-24 bg-[#000405] text-white stagger-trigger">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-anton uppercase text-center mb-6">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-base md:text-lg font-helvetica text-white/80 text-center mb-12">
+            Quick answers to the most common questions about how Traction 13 runs and what you can expect.
+          </p>
+
+          <Accordion type="single" collapsible className="space-y-4">
+            {FAQS.map(({ question, answer }, index) => (
+              <AccordionItem value={`faq-${index + 1}`} key={question} className="border-white/10">
+                <AccordionTrigger className="text-base md:text-lg font-helvetica-bold uppercase tracking-wide">
+                  {question}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm md:text-base font-helvetica text-white/80 leading-relaxed">
+                  {answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+
+          <p className="text-xs md:text-sm font-mono text-center text-white/70 mt-10 uppercase tracking-wide">
+            Still unsure? Reach out via apply form and we will get back within 24 hours.
+          </p>
         </div>
       </section>
 
