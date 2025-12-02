@@ -308,7 +308,7 @@ export function HomeContent() {
                 need to <span className="text-primary">ship</span>
               </h2>
               <p className="text-sm md:text-base font-ibm-plex-mono uppercase mb-8 md:mb-12 stagger-item">
-                For only ₩75,000 until November 1
+                For only ₩75,000 until the early-bird period              
               </p>
 
               <div className="mb-8 md:mb-12 stagger-item">
@@ -349,9 +349,7 @@ export function HomeContent() {
 
                 {/* Main Slot - Save your slot */}
                 <div className="bg-white rounded-[45.5px] p-6 flex items-center justify-between shadow-md h-[88px] w-[360px] z-30 relative -mt-10 stagger-item">
-                  <Button className="bg-primary hover:bg-primary/90 text-white rounded-[45.5px] px-8 py-4 h-[60px] font-mono font-bold uppercase text-sm">
-                    Save your slot
-                  </Button>
+                  <ApplicationButton text="Save your slot" variant="primary" />
                   <div className="text-right text-black">
                     <p className="text-sm font-helvetica-bold uppercase leading-tight">special price</p>
                     <p className="text-xl font-helvetica-bold text-primary leading-tight">₩75.000</p>
@@ -362,14 +360,14 @@ export function HomeContent() {
                 <div className="bg-white/40 text-black backdrop-blur-[20px] rounded-4xl p-6 flex items-end justify-between shadow-[0px_4px_4px_rgba(0,0,0,0.1)] h-[88px] w-[320px] z-20 relative -mt-10 stagger-item">
                   <div className="flex items-center gap-3">
                     <p className="text-base font-helvetica-bold">Last Change</p>
-                    <p className="text-sm font-mono">Nov 1</p>
+                    {/* <p className="text-sm font-mono">Nov 1</p> */}
                   </div>
                   <p className="text-sm font-helvetica uppercase">₩120.000</p>
                 </div>
 
                 {/* After Nov 10 */}
                 <div className="bg-white/36 text-black backdrop-blur-[20px] rounded-4xl p-6 flex items-end justify-between h-[88px] w-[280px] z-10 relative -mt-10 stagger-item">
-                  <p className="text-sm font-bold">After Nov 10</p>
+                  <p className="text-sm font-bold">After D-7</p>
                   <p className="text-sm font-helvetica uppercase">₩220.000</p>
                 </div>
               </div>

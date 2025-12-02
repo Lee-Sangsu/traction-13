@@ -34,7 +34,7 @@ export function Footer() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 text-xs md:text-sm font-helvetica items-center justify-between mb-12 text-white">
-            <a href="#" className="hover:text-primary transition-colors">Hybrid format the nov 12 - dec 3</a>
+            <a href="#" className="hover:text-primary transition-colors">Hybrid format</a>
             
             <div className="flex flex-wrap gap-4 md:gap-8">
               <a href="#" className="hover:text-primary transition-colors">CONTACT SALES</a>

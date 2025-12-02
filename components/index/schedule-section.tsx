@@ -9,7 +9,7 @@ const scheduleData = [
     number: "01",
     title: "DEFINE",
     duration: "3 days",
-    dates: "Nov 12-14",
+    dates: "3 days",
     tagline: "From guesswork to a clear problem",
     description:
       "Three focused days to align on who you serve, the pain worth solving, and the success metric that will steer every decision. You capture signals, sharpen language, and use AI co-pilots to synthesize patterns so everyone points in the same direction.",
@@ -24,7 +24,7 @@ const scheduleData = [
     number: "02",
     title: "BUILD",
     duration: "5 days",
-    dates: "Nov 15-19",
+    dates: "5 days",
     tagline: "From insight to a buyable offer",
     description:
       "Five days to turn your problem insight into something people can actually buy. You'll craft a crisp promise, set a sensible price, and design a simple path to 'yes.' Two fast iterations ensure your offer lands in seconds and gives you clean signals when it's time to refine or double down.",
@@ -39,7 +39,7 @@ const scheduleData = [
     number: "03",
     title: "SELL",
     duration: "5 days",
-    dates: "Nov 20-24",
+    dates: "5 days",
     tagline: "From offer to real proof",
     description:
       "Five days of daily sales loops that turn interest into proof. You'll run outreach, track conversations, handle objections, and collect real outcomes—replies, sign-ups, pre-orders, or sales. With AI as co-pilot, you learn faster from each touchpoint and finish with a light system you can keep running.",
@@ -54,7 +54,7 @@ const scheduleData = [
     number: "04",
     title: "SHOWCASE",
     duration: "Event",
-    dates: "Dec 3",
+    dates: "Last day",
     tagline: "From proof to pitch",
     description:
       "The final event where you present your journey. Five minutes to tell the story of what you built, who you talked to, and what you learned. Five minutes to defend it against questions from partners and peers. A public leaderboard shows who delivered real traction, and prizes up to ₩1,000,000 go to the teams that proved their ideas in the market.",
@@ -78,7 +78,7 @@ export function ScheduleSection() {
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-anton text-white uppercase mr-2">
             The Schedule
           </h2>
-          <p className="text-lg md:text-xl text-white uppercase">Nov 12 - Dec 3</p>
+          <p className="text-lg md:text-xl text-white uppercase">13 Days</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
