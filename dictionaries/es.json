@@ -1,0 +1,43 @@
+{
+  "common": {
+    "brand": "Traction 13",
+    "continue": "Continuar",
+    "back": "Volver",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "viewEvidence": "Ver evidencia",
+    "demoMode": "Modo demostración",
+    "notifications": "Notificaciones",
+    "profile": "Perfil",
+    "settings": "Configuración"
+  },
+  "founder": {
+    "navigation": {
+      "today": "Hoy",
+      "journey": "Mi recorrido",
+      "evidence": "Evidencia",
+      "problem": "Problema",
+      "offer": "Oferta",
+      "sales": "Ventas",
+      "mentor": "Mentor IA",
+      "team": "Equipo",
+      "report": "Reporte de tracción"
+    },
+    "outcomes": {
+      "problem": "Problema",
+      "offer": "Oferta",
+      "sales": "Ventas"
+    }
+  },
+  "admin": {
+    "navigation": {
+      "commandCenter": "Centro de control",
+      "participants": "Participantes",
+      "interventions": "Intervenciones",
+      "programs": "Programas",
+      "agents": "Operación de agentes",
+      "reports": "Reportes",
+      "settings": "Configuración"
+    }
+  }
+}

@@ -5,8 +5,6 @@ import { Anton, Roboto, IBM_Plex_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
 import { Toaster } from "@/components/ui/sonner"
 
 const anton = Anton({
@@ -43,13 +41,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`font-sans ${anton.variable} ${helvetica.variable} ${ibmPlexMono.variable}`}>
-        <Header />
         <Suspense fallback={null}>{children}</Suspense>
-        <Footer />
         <Analytics />
-        <Toaster />
+        <Toaster visibleToasts={3} />
       </body>
     </html>
   )
